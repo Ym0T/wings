@@ -23,10 +23,10 @@ import (
 	"github.com/docker/docker/pkg/parsers/operatingsystem"
 	"github.com/spf13/cobra"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/loggers/cli"
-	"github.com/pterodactyl/wings/system"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/environment"
+	"github.com/ym0t/wings/loggers/cli"
+	"github.com/ym0t/wings/system"
 )
 
 const (

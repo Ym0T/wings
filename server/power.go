@@ -8,8 +8,8 @@ import (
 	"emperror.dev/errors"
 	"github.com/google/uuid"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/environment"
 )
 
 type PowerAction string

@@ -11,13 +11,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pterodactyl/wings/internal/models"
+	"github.com/ym0t/wings/internal/models"
 
 	"emperror.dev/errors"
 	"github.com/apex/log"
 	"github.com/cenkalti/backoff/v4"
 
-	"github.com/pterodactyl/wings/system"
+	"github.com/ym0t/wings/system"
 )
 
 type Client interface {

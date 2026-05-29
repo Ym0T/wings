@@ -26,16 +26,16 @@ import (
 	"golang.org/x/crypto/acme"
 	"golang.org/x/crypto/acme/autocert"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/internal/cron"
-	"github.com/pterodactyl/wings/internal/database"
-	"github.com/pterodactyl/wings/loggers/cli"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/router"
-	"github.com/pterodactyl/wings/server"
-	"github.com/pterodactyl/wings/sftp"
-	"github.com/pterodactyl/wings/system"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/environment"
+	"github.com/ym0t/wings/internal/cron"
+	"github.com/ym0t/wings/internal/database"
+	"github.com/ym0t/wings/loggers/cli"
+	"github.com/ym0t/wings/remote"
+	"github.com/ym0t/wings/router"
+	"github.com/ym0t/wings/server"
+	"github.com/ym0t/wings/sftp"
+	"github.com/ym0t/wings/system"
 )
 
 var (
@@ -83,7 +83,7 @@ func init() {
 	rootCommand.Flags().Int("pprof-port", 6060, "If provided with --pprof, the port it will run on")
 	rootCommand.Flags().Bool("auto-tls", false, "pass in order to have wings generate and manage its own SSL certificates using Let's Encrypt")
 	rootCommand.Flags().String("tls-hostname", "", "required with --auto-tls, the FQDN for the generated SSL certificate")
-	rootCommand.Flags().Bool("ignore-certificate-errors", false, "ignore certificate verification errors when executing API calls")
+	rootCommand.Flags().Bool("no-ignore-certificate-errors", false, "do not ignore certificate verification errors when executing API calls")
 
 	rootCommand.AddCommand(versionCommand)
 	rootCommand.AddCommand(configureCmd)
@@ -95,13 +95,14 @@ func rootCmdRun(cmd *cobra.Command, _ []string) {
 	log.Debug("running in debug mode")
 	log.WithField("config_file", configPath).Info("loading configuration from file")
 
-	if ok, _ := cmd.Flags().GetBool("ignore-certificate-errors"); ok {
-		log.Warn("running with --ignore-certificate-errors: TLS certificate host chains and name will not be verified")
+	if ok, _ := cmd.Flags().GetBool("no-ignore-certificate-errors"); !ok {
 		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{
 			InsecureSkipVerify: true,
 		}
+	} else {
+		log.Warn("not running with --no-ignore-certificate-errors: TLS certificate host chains and name will not be verified")
 	}
-
+	
 	if err := config.ConfigureTimezone(); err != nil {
 		log.WithField("error", err).Fatal("failed to detect system timezone or use supplied configuration value")
 		return
@@ -446,8 +447,8 @@ __ [blue][bold]Pterodactyl[reset] _____/___/_______ _______ ______
 Copyright © 2018 - %d Dane Everitt & Contributors
 
 Website:  https://pterodactyl.io
- Source:  https://github.com/pterodactyl/wings
-License:  https://github.com/pterodactyl/wings/blob/develop/LICENSE
+ Source:  https://github.com/ym0t/wings
+License:  https://github.com/ym0t/wings/blob/develop/LICENSE
 
 This software is made available under the terms of the MIT license.
 The above copyright notice and this permission notice shall be included

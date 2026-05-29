@@ -1,10 +1,11 @@
 [![Logo Image](https://cdn.pterodactyl.io/logos/new/pterodactyl_logo.png)](https://pterodactyl.io)
 
-![Discord](https://img.shields.io/discord/122900397965705216?label=Discord&logo=Discord&logoColor=white)
-![GitHub Releases](https://img.shields.io/github/downloads/pterodactyl/wings/latest/total)
-[![Go Report Card](https://goreportcard.com/badge/github.com/pterodactyl/wings)](https://goreportcard.com/report/github.com/pterodactyl/wings)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ym0t/wings)](https://goreportcard.com/report/github.com/ym0t/wings)
 
-# Pterodactyl Wings
+# Wings (ym0t fork)
+
+This is an independently maintained fork of [pterodactyl/wings](https://github.com/pterodactyl/wings), incorporating
+patches and improvements from [0x7d8/wings](https://github.com/0x7d8/wings) as well as upstream pterodactyl/wings.
 
 Wings is Pterodactyl's server control plane, built for the rapidly changing gaming industry and designed to be
 highly performant and secure. Wings provides an HTTP API allowing you to interface directly with running server
@@ -13,29 +14,48 @@ instances, fetch server logs, generate backups, and control all aspects of the s
 In addition, Wings ships with a built-in SFTP server allowing your system to remain free of Pterodactyl specific
 dependencies, and allowing users to authenticate with the same credentials they would normally use to access the Panel.
 
-## Sponsors
+## Why this fork?
 
-I would like to extend my sincere thanks to the following sponsors for helping fund Pterodactyl's development.
-[Interested in becoming a sponsor?](https://github.com/sponsors/pterodactyl)
+[0x7d8/wings](https://github.com/0x7d8/wings) is a fork of [pterodactyl/wings](https://github.com/pterodactyl/wings)
+that adds Minecraft server version detection. This repository carries the same feature, independently maintained —
+meaning changes from pterodactyl/wings have to be manually merged into both forks over time.
 
-| Company                                                                           | About                                                                                                                                                                                                                                           |
-|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**Aussie Server Hosts**](https://aussieserverhosts.com/)                         | No frills Australian Owned and operated High Performance Server hosting for some of the most demanding games serving Australia and New Zealand.                                                                                                 |
-| [**BisectHosting**](https://www.bisecthosting.com/)                               | BisectHosting provides Minecraft, Valheim and other server hosting services with the highest reliability and lightning fast support since 2012.                                                                                                 |
-| [**MineStrator**](https://minestrator.com/)                                       | Looking for the most highend French hosting company for your minecraft server? More than 24,000 members on our discord trust us. Give us a try!                                                                                                 |
-| [**HostEZ**](https://hostez.io)                                                   | US & EU Rust & Minecraft Hosting. DDoS Protected bare metal, VPS and colocation with low latency, high uptime and maximum availability. EZ!                                                                                                     |
-| [**Blueprint**](https://blueprint.zip/?utm_source=pterodactyl&utm_medium=sponsor) | Create and install Pterodactyl addons and themes with the growing Blueprint framework - the package-manager for Pterodactyl. Use multiple modifications at once without worrying about conflicts and make use of the large extension ecosystem. |
-| [**indifferent broccoli**](https://indifferentbroccoli.com/)                      | indifferent broccoli is a game server hosting and rental company. With us, you get top-notch computer power for your gaming sessions. We destroy lag, latency, and complexity--letting you focus on the fun stuff.                              |
+Since neither fork is guaranteed to always be fully up to date, this repo exists as a redundant alternative:
+if [0x7d8/wings](https://github.com/0x7d8/wings) is ahead, use that — if this one is, use this. By not being a
+GitHub fork of 0x7d8/wings, there are no upstream constraints on when and what gets merged.
+
+## ⬇️ Download
+
+Binaries are automatically built from the `develop` branch on every push.  
+The `_debug` variants include debug symbols — only needed for troubleshooting.
+
+| Platform | Normal | Debug |
+|----------|--------|-------|
+| Linux x86_64 (amd64) | [wings_linux_amd64](https://nightly.link/Ym0T/wings/workflows/push.yaml/develop/wings_linux_amd64.zip) | [wings_linux_amd64_debug](https://nightly.link/Ym0T/wings/workflows/push.yaml/develop/wings_linux_amd64_debug.zip) |
+| Linux ARM64 | [wings_linux_arm64](https://nightly.link/Ym0T/wings/workflows/push.yaml/develop/wings_linux_arm64.zip) | [wings_linux_arm64_debug](https://nightly.link/Ym0T/wings/workflows/push.yaml/develop/wings_linux_arm64_debug.zip) |
+
+### Quick Install
+
+```bash
+curl -L -o /tmp/wings.zip \
+  "https://nightly.link/Ym0T/wings/workflows/push.yaml/develop/wings_linux_$([ "$(uname -m)" = "x86_64" ] && echo amd64 || echo arm64).zip" \
+  && unzip -o /tmp/wings.zip -d /usr/local/bin \
+  && chmod +x /usr/local/bin/wings \
+  && rm /tmp/wings.zip \
+  && systemctl restart wings \
+  && wings version
+```
+
+> ⚠️ These are development builds from the `develop` branch. Use at your own risk.
 
 ## Documentation
 
 * [Panel Documentation](https://pterodactyl.io/panel/1.0/getting_started.html)
 * [Wings Documentation](https://pterodactyl.io/wings/1.0/installing.html)
 * [Community Guides](https://pterodactyl.io/community/about.html)
-* Or, get additional help [via Discord](https://discord.gg/pterodactyl)
+* [Discord](https://discord.gg/pterodactyl)
 
 ## Reporting Issues
 
-Please use the [pterodactyl/panel](https://github.com/pterodactyl/panel) repository to report any issues or make
-feature requests for Wings. In addition, the [security policy](https://github.com/pterodactyl/panel/security/policy) listed
-within that repository also applies to Wings.
+For issues specific to this fork, open an issue in this repository. For upstream bugs that affect the original
+pterodactyl/wings, please also report them at [pterodactyl/panel](https://github.com/pterodactyl/panel).

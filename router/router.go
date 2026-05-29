@@ -7,10 +7,10 @@ import (
 	"github.com/apex/log"
 	"github.com/gin-gonic/gin"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/router/middleware"
-	wserver "github.com/pterodactyl/wings/server"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/remote"
+	"github.com/ym0t/wings/router/middleware"
+	wserver "github.com/ym0t/wings/server"
 )
 
 var tokenRegex = regexp.MustCompile(`([?|&]token=)([^&]+)($|&)`)
@@ -84,6 +84,8 @@ func Configure(m *wserver.Manager, client remote.Client) *gin.Engine {
 		server.POST("/sync", postServerSync)
 		server.POST("/ws/deny", postServerDenyWSTokens)
 
+		server.GET("/version", getInstalledVersion)
+
 		// This archive request causes the archive to start being created
 		// this should only be triggered by the panel.
 		server.POST("/transfer", postServerTransfer)
@@ -94,6 +96,7 @@ func Configure(m *wserver.Manager, client remote.Client) *gin.Engine {
 			files.GET("/contents", getServerFileContents)
 			files.GET("/list-directory", getServerListDirectory)
 			files.PUT("/rename", putServerRenameFiles)
+			files.POST("/search", postServerSearchFiles)
 			files.POST("/copy", postServerCopyFile)
 			files.POST("/write", postServerWriteFile)
 			files.POST("/create-directory", postServerCreateDirectory)

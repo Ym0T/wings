@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/pterodactyl/wings/events"
-	"github.com/pterodactyl/wings/system"
+	"github.com/ym0t/wings/events"
+	"github.com/ym0t/wings/system"
 )
 
 // Defines all the possible output events for a server.

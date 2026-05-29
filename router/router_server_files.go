@@ -18,13 +18,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/internal/models"
-	"github.com/pterodactyl/wings/router/downloader"
-	"github.com/pterodactyl/wings/router/middleware"
-	"github.com/pterodactyl/wings/router/tokens"
-	"github.com/pterodactyl/wings/server"
-	"github.com/pterodactyl/wings/server/filesystem"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/internal/models"
+	"github.com/ym0t/wings/router/downloader"
+	"github.com/ym0t/wings/router/middleware"
+	"github.com/ym0t/wings/router/tokens"
+	"github.com/ym0t/wings/server"
+	"github.com/ym0t/wings/server/filesystem"
 )
 
 // getServerFileContents returns the contents of a file on the server.
@@ -33,6 +33,14 @@ func getServerFileContents(c *gin.Context) {
 	p := strings.TrimLeft(c.Query("file"), "/")
 	f, st, err := s.Filesystem().File(p)
 	if err != nil {
+		// If the error is that the file does not exist return a 404 error.
+		if errors.Is(err, os.ErrNotExist) {
+			c.AbortWithStatusJSON(http.StatusNotFound, gin.H{
+				"error": "The requested file was not found on the server.",
+			})
+			return
+		}
+
 		middleware.CaptureAndAbort(c, err)
 		return
 	}
