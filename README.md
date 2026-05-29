@@ -1,11 +1,14 @@
 [![Logo Image](https://cdn.pterodactyl.io/logos/new/pterodactyl_logo.png)](https://pterodactyl.io)
 
+[![Push](https://github.com/Ym0T/wings/actions/workflows/push.yaml/badge.svg?branch=develop)](https://github.com/Ym0T/wings/actions/workflows/push.yaml)
+[![Docker](https://github.com/Ym0T/wings/actions/workflows/docker.yaml/badge.svg?branch=develop)](https://github.com/Ym0T/wings/actions/workflows/docker.yaml)
+[![CodeQL](https://github.com/Ym0T/wings/actions/workflows/codeql.yaml/badge.svg?branch=develop)](https://github.com/Ym0T/wings/actions/workflows/codeql.yaml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ym0t/wings)](https://goreportcard.com/report/github.com/ym0t/wings)
 
 # Wings (ym0t fork)
 
-This is an independently maintained fork of [pterodactyl/wings](https://github.com/pterodactyl/wings), incorporating
-patches and improvements from [0x7d8/wings](https://github.com/0x7d8/wings) as well as upstream pterodactyl/wings.
+This is an independently maintained fork of [pterodactyl/wings](https://github.com/pterodactyl/wings), carrying the
+same Minecraft server version detection feature as [0x7d8/wings](https://github.com/0x7d8/wings).
 
 Wings is Pterodactyl's server control plane, built for the rapidly changing gaming industry and designed to be
 highly performant and secure. Wings provides an HTTP API allowing you to interface directly with running server
