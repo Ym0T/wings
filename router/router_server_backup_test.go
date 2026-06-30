@@ -13,12 +13,12 @@ import (
 	"github.com/apex/log"
 	"github.com/gin-gonic/gin"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/events"
-	"github.com/pterodactyl/wings/internal/models"
-	"github.com/pterodactyl/wings/remote"
-	wserver "github.com/pterodactyl/wings/server"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/environment"
+	"github.com/ym0t/wings/events"
+	"github.com/ym0t/wings/internal/models"
+	"github.com/ym0t/wings/remote"
+	wserver "github.com/ym0t/wings/server"
 )
 
 func init() {

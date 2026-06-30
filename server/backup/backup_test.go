@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/server/filesystem"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/server/filesystem"
 )
 
 func TestBackupGenerateRequiresUuidIdentifier(t *testing.T) {
