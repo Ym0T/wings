@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/remote"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/remote"
 )
 
 // setTestConfig stores a configuration for tests that use the global one, so

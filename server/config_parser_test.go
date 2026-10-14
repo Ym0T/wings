@@ -10,10 +10,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/parser"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/server/filesystem"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/parser"
+	"github.com/ym0t/wings/remote"
+	"github.com/ym0t/wings/server/filesystem"
 )
 
 func newConfigParserServer(t *testing.T, diskLimit int64, raw string) (*Server, string) {

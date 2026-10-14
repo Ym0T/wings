@@ -10,8 +10,8 @@ import (
 	"github.com/apex/log"
 	"github.com/apex/log/handlers/memory"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/events"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/events"
 )
 
 // setupMountTest creates a directory to hold mount sources and points the

@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/pterodactyl/wings/internal/ufs"
+	"github.com/ym0t/wings/internal/ufs"
 )
 
 // Writing through a link to a file outside the root fails and leaves that file

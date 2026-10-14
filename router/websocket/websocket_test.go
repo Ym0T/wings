@@ -17,11 +17,11 @@ import (
 	"github.com/gbrlsnchs/jwt/v3"
 	"github.com/gorilla/websocket"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/router/tokens"
-	"github.com/pterodactyl/wings/server"
+	"github.com/ym0t/wings/config"
+	"github.com/ym0t/wings/environment"
+	"github.com/ym0t/wings/remote"
+	"github.com/ym0t/wings/router/tokens"
+	"github.com/ym0t/wings/server"
 )
 
 const (
